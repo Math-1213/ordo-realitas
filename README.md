@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Ordo Realitas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hub para mesas de RPG **Ordem Paranormal RPG**, com suporte para:
+- Login por token de sala
+- Área do mestre (admin)
+- Área de jogo com mapas, fichas e informações de combate
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tecnologias
+- React
+- React Router
+- Firebase (Firestore + Storage)
+- Yarn
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📦 Instalação
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone o repositório**
+```bash
+git clone https://github.com/seu-usuario/ordo-realitas.git
+cd ordo-realitas
+```
 
-### `yarn test`
+2. **Instale as dependências**
+```bash
+yarn install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. 🔥**Configurando Firebase**
+Acesse Firebase Console.
 
-### `yarn build`
+Clique em Adicionar Projeto e dê um nome (ex: ordo-realitas).
+Ative Firestore Database e Storage no painel.
+Vá em Configurações do Projeto > Suas Apps > Web e copie o objeto firebaseConfig.
+No projeto, crie um arquivo src/firebase.js e cole a configuração:
+```bash
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_PROJECT_ID.appspot.com",
+  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
+  appId: "SEU_APP_ID"
+};
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. ▶️**Executando o projeto**
+```bash
+yarn start
+```
+O projeto deverá ser aberta em http://localhost:3000.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Observações**
+- O projeto não exige autenticação de usuário, mas use Firestore Rules para proteger os dados por token de sala.
+- Como é para uso pessoal, a versão gratuita do Firebase é suficiente.
